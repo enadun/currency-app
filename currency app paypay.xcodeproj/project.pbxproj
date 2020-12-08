@@ -18,6 +18,7 @@
 		7FE0BB8F257F7FD000AC07F1 /* Endpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FE0BB8E257F7FD000AC07F1 /* Endpoints.swift */; };
 		7FE0BB91257F802C00AC07F1 /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FE0BB90257F802C00AC07F1 /* AppConstants.swift */; };
 		7FE0BB95257F8A8B00AC07F1 /* HomeViewTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FE0BB94257F8A8B00AC07F1 /* HomeViewTest.swift */; };
+		7FE0BB98257FC81800AC07F1 /* ExchangeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FE0BB97257FC81800AC07F1 /* ExchangeCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +47,7 @@
 		7FE0BB8E257F7FD000AC07F1 /* Endpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoints.swift; sourceTree = "<group>"; };
 		7FE0BB90257F802C00AC07F1 /* AppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
 		7FE0BB94257F8A8B00AC07F1 /* HomeViewTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewTest.swift; sourceTree = "<group>"; };
+		7FE0BB97257FC81800AC07F1 /* ExchangeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +115,7 @@
 		7FE0BB86257F7C0E00AC07F1 /* Main Screen */ = {
 			isa = PBXGroup;
 			children = (
+				7FE0BB96257FC73300AC07F1 /* Cell */,
 				7FE0BB68257F7BCA00AC07F1 /* HomeViewController.swift */,
 			);
 			path = "Main Screen";
@@ -141,6 +144,14 @@
 				7FE0BB90257F802C00AC07F1 /* AppConstants.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		7FE0BB96257FC73300AC07F1 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				7FE0BB97257FC81800AC07F1 /* ExchangeCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -245,6 +256,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7FE0BB98257FC81800AC07F1 /* ExchangeCell.swift in Sources */,
 				7FE0BB8C257F7F0600AC07F1 /* CurrencyService.swift in Sources */,
 				7FE0BB69257F7BCA00AC07F1 /* HomeViewController.swift in Sources */,
 				7FE0BB65257F7BCA00AC07F1 /* AppDelegate.swift in Sources */,

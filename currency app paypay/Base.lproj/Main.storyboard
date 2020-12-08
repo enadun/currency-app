@@ -14,13 +14,124 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="1.00" borderStyle="roundedRect" textAlignment="right" minimumFontSize="18" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="UsP-e5-d8P" userLabel="CurrencyTextField">
+                                <rect key="frame" x="10" y="54" width="394" height="52.5"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="36"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="numberPad" returnKeyType="done" smartDashesType="yes"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s4q-cD-Ru1" userLabel="SelectCurrencyButton">
+                                <rect key="frame" x="324" y="114.5" width="80" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="8zy-jB-kRg"/>
+                                    <constraint firstAttribute="width" constant="80" id="tdo-Cs-YuY"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="27"/>
+                                <state key="normal" title="XYZ"/>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FzA-S9-32H">
+                                <rect key="frame" x="0.0" y="166.5" width="414" height="40.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last update at xx:xx" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cjU-Zp-HB9">
+                                        <rect key="frame" x="20" y="10" width="374" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="cjU-Zp-HB9" firstAttribute="leading" secondItem="FzA-S9-32H" secondAttribute="leading" constant="20" id="2lY-Ps-EWa"/>
+                                    <constraint firstAttribute="trailing" secondItem="cjU-Zp-HB9" secondAttribute="trailing" constant="20" id="LLV-UU-Op4"/>
+                                    <constraint firstItem="cjU-Zp-HB9" firstAttribute="top" secondItem="FzA-S9-32H" secondAttribute="top" constant="10" id="ZaW-tU-cXk"/>
+                                    <constraint firstAttribute="bottom" secondItem="cjU-Zp-HB9" secondAttribute="bottom" constant="10" id="qC2-o6-XRu"/>
+                                </constraints>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="XKN-3e-gPc">
+                                <rect key="frame" x="0.0" y="207" width="414" height="689"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="separatorColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <color key="sectionIndexBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ExchangeCell" rowHeight="105" id="0tQ-xZ-FXX" customClass="ExchangeCell" customModule="Currency_App" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="105"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="0tQ-xZ-FXX" id="JZG-xD-NBw">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="105"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bosnia-Herzegovina Convertible Mark" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="11" translatesAutoresizingMaskIntoConstraints="NO" id="vEp-Zd-vhM" userLabel="CurrencyName">
+                                                    <rect key="frame" x="8" y="8" width="398" height="26"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="120,000.00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ubk-xF-zYv" userLabel="ExchangedAmount">
+                                                    <rect key="frame" x="8" y="64.5" width="398" height="32.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="27"/>
+                                                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1 USD = 1.333104 SGD" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hdq-rn-Di3" userLabel="ExchangeRate">
+                                                    <rect key="frame" x="276.5" y="42" width="129.5" height="14.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="vEp-Zd-vhM" secondAttribute="trailing" constant="8" id="24U-HB-5BA"/>
+                                                <constraint firstItem="Hdq-rn-Di3" firstAttribute="top" secondItem="vEp-Zd-vhM" secondAttribute="bottom" constant="8" id="6j1-zX-EhS"/>
+                                                <constraint firstItem="vEp-Zd-vhM" firstAttribute="top" secondItem="JZG-xD-NBw" secondAttribute="top" constant="8" id="AMp-1N-FDu"/>
+                                                <constraint firstAttribute="bottom" secondItem="ubk-xF-zYv" secondAttribute="bottom" constant="8" id="K19-ee-0Zz"/>
+                                                <constraint firstAttribute="trailing" secondItem="Hdq-rn-Di3" secondAttribute="trailing" constant="8" id="OFg-oz-yNO"/>
+                                                <constraint firstItem="ubk-xF-zYv" firstAttribute="top" secondItem="Hdq-rn-Di3" secondAttribute="bottom" constant="8" id="kIz-HQ-mqN"/>
+                                                <constraint firstAttribute="trailing" secondItem="ubk-xF-zYv" secondAttribute="trailing" constant="8" id="mjb-uY-wW5"/>
+                                                <constraint firstItem="vEp-Zd-vhM" firstAttribute="leading" secondItem="JZG-xD-NBw" secondAttribute="leading" constant="8" id="q4C-c0-epd"/>
+                                                <constraint firstItem="ubk-xF-zYv" firstAttribute="leading" secondItem="JZG-xD-NBw" secondAttribute="leading" constant="8" id="smy-f0-O4m"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <connections>
+                                            <outlet property="currencyTitleLabel" destination="vEp-Zd-vhM" id="JdQ-se-U3H"/>
+                                            <outlet property="exchangeAmountLabel" destination="ubk-xF-zYv" id="IKh-f5-uH7"/>
+                                            <outlet property="exchangeRateLabel" destination="Hdq-rn-Di3" id="aii-RB-J1P"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="XKN-3e-gPc" secondAttribute="trailing" id="2r6-sr-d9p"/>
+                            <constraint firstItem="UsP-e5-d8P" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="4Gj-zh-Hrj"/>
+                            <constraint firstItem="FzA-S9-32H" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="8ub-4f-6DS"/>
+                            <constraint firstItem="XKN-3e-gPc" firstAttribute="top" secondItem="FzA-S9-32H" secondAttribute="bottom" id="LFF-dW-mAJ"/>
+                            <constraint firstItem="XKN-3e-gPc" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Mwn-yE-zoN"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="UsP-e5-d8P" secondAttribute="trailing" constant="10" id="R3y-Hp-0bG"/>
+                            <constraint firstItem="UsP-e5-d8P" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="Tzq-bh-SgP"/>
+                            <constraint firstAttribute="bottom" secondItem="XKN-3e-gPc" secondAttribute="bottom" id="Xe2-JZ-TEK"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="FzA-S9-32H" secondAttribute="trailing" id="bXv-id-VXq"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="s4q-cD-Ru1" secondAttribute="trailing" constant="10" id="qyN-ge-VcD"/>
+                            <constraint firstItem="FzA-S9-32H" firstAttribute="top" secondItem="s4q-cD-Ru1" secondAttribute="bottom" constant="8" id="vzc-LE-3lr"/>
+                            <constraint firstItem="s4q-cD-Ru1" firstAttribute="top" secondItem="UsP-e5-d8P" secondAttribute="bottom" constant="8" id="yAD-jl-BXz"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="currencySelectionButton" destination="s4q-cD-Ru1" id="T1a-7J-OOc"/>
+                        <outlet property="currencyTextField" destination="UsP-e5-d8P" id="f03-Jk-oUF"/>
+                        <outlet property="lastUpdateLabel" destination="cjU-Zp-HB9" id="Tp0-ZU-H4h"/>
+                        <outlet property="tableView" destination="XKN-3e-gPc" id="Nd6-6X-eSP"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="139" y="86"/>
+            <point key="canvasLocation" x="137.68115942028987" y="85.714285714285708"/>
         </scene>
     </scenes>
 </document>
