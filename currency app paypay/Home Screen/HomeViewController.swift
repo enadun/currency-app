@@ -38,24 +38,42 @@ class HomeViewController: UIViewController {
     
     private func loadList() {
         loadingView.isHidden = false
-        viewModel.getCurrncyList { [weak self] success in
-            if success {
-                self?.getRates()
-            } else {
+        viewModel.loadCurrncyList { [weak self] success in
+            DispatchQueue.main.async {
                 self?.loadingView.isHidden = true
-                //TODO: handle
+                if success {
+                    self?.updateView()
+                } else {
+                    self?.displayAlert()
+                }
             }
         }
     }
     
-    private func getRates() {
-        viewModel.getCurrncyRates { [weak self] success in
-            self?.loadingView.isHidden = true
-            if !success {
-                //TODO: Update with old results alert
-            }
-            self?.updateView()
+    private func displayAlert() {
+        let alert: UIAlertController
+        if viewModel.currencySummery == nil {
+            alert = UIAlertController(title: Strings.Alert.titleNotLoaded,
+                                      message: Strings.Alert.messageDataNotAvailable,
+                                      preferredStyle: .alert)
+            
+            alert.addAction(UIAlertAction(title: Strings.Alert.tryAgainButton,
+                                          style: .default) { [weak self] _ in
+                                            alert.dismiss(animated: true, completion: nil)
+                                            self?.loadList()
+            })
+        } else {
+            alert = UIAlertController(title: Strings.Alert.titleNotLoaded,
+                                      message: Strings.Alert.messageDataOutdated,
+                                      preferredStyle: .alert)
+            
+            alert.addAction(UIAlertAction(title: Strings.Alert.okButton,
+                                          style: .default) { [weak self] _ in
+                                            alert.dismiss(animated: true, completion: nil)
+                                            self?.updateView()
+            })
         }
+        present(alert, animated: true)
     }
     
     private func getInputAccessoryView() -> UIView {
@@ -80,7 +98,8 @@ class HomeViewController: UIViewController {
     }
     
     private func updateView() {
-        currencySelectionTextField.text = viewModel.selectedCurrencyKey
+        lastUpdateLabel.text = viewModel.getLastUpdateTimeString()
+        currencySelectionTextField.text = "\(viewModel.selectedCurrencyKey ?? "") 🔻"
         selectedCurrencyNameLabel.text = viewModel.getCurrencyName(for: viewModel.selectedCurrencyKey ?? "")
         currencyList = viewModel.currencySummery?.currencyList?.map {
             $0.key
@@ -96,13 +115,12 @@ class HomeViewController: UIViewController {
         })
         
         tableView.reloadData()
-        
         picker.selectRow(0, inComponent: 0, animated: false)
     }
     
     @objc func doneButtonPressed() {
         view.endEditing(true)
-        updateView()
+        loadList()
     }
     
     @objc func textFieldDidChange(_ textField: UITextField) {
@@ -126,13 +144,12 @@ extension HomeViewController: UIPickerViewDataSource, UIPickerViewDelegate {
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         let key = getCurrencyKeyForPicker(with: row)
-        return viewModel.getCurrencyName(for: key)
+        return (viewModel.getCurrencyName(for: key))
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         let key = getCurrencyKeyForPicker(with: row)
         viewModel.setSelectedCurrencyKey(selectedCurrency: key)
-        print(viewModel.getCurrencyName(for: key))
     }
     
     private func getCurrencyKeyForPicker(with row: Int) -> String {
@@ -167,10 +184,9 @@ extension HomeViewController: UITextFieldDelegate {
     }
 }
 
-
 extension HomeViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        viewModel.currencySummery?.currencyRates?.count ?? 0
+        currencyList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -182,7 +198,5 @@ extension HomeViewController: UITableViewDataSource {
         cell?.exchangeAmountLabel.text = viewModel.getCurrencyAmountStringFor(key: key)
         return cell ?? ExchangeCell()
     }
-    
-    
 }
 

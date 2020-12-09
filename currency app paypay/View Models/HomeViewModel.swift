@@ -14,12 +14,20 @@ class HomeViewModel {
     private(set) var currencySummery: CurrencySummery?
     private var currencyList: [String: String]?
     private let currencyService: CurrencyServiceType
+    private let dataManager = DataManager()
     
     init() {
-        //        currencyService = CurrencyService()
-        currencyService = MockCurrencyService()
+        currencyService = CurrencyService()
         selectedCurrencyKey = "USD"
         currncyAmount = 1
+    }
+    
+    func getLastUpdateTimeString() -> String {
+        if let timestamp = currencySummery?.timestamp {
+            let dateString = getDateTimeString(from: timestamp)
+            return String.init(format: Strings.last_update_time, dateString)
+        }
+        return ""
     }
     
     func setSelectedCurrencyKey(selectedCurrency: String?) {
@@ -28,26 +36,41 @@ class HomeViewModel {
     func setCurrencyAmount(amount: Double) {
         self.currncyAmount = amount
     }
-    func getCurrncyList(completion: @escaping (Bool) -> ()) {
+    
+    func loadCurrncyList(completion: @escaping (Bool) -> ()) {
+        var timeStamp: Double?
+        //Load from memory
+        if let currencySummery = currencySummery {
+            timeStamp = currencySummery.timestamp
+        } else if let currencySummery = dataManager.loadCurrencyData() {
+            //Loded from cache
+            self.currencySummery = currencySummery
+            timeStamp = currencySummery.timestamp
+        } //If not available Could be the fist time open and load from the API
+        
+        if let lastTimeStamp = timeStamp {
+            if Date().timeIntervalSince1970 - lastTimeStamp < Config.request_time_interval {
+                return completion(true)
+            }
+        }
+        //Load from API
+        getCurrencyList(completion: completion)
+    }
+    
+    func getCurrencyList(completion: @escaping (Bool) -> ()) {
         currencyService.getCurrencyList { [weak self] result in
             switch result {
             case .success(let model):
                 self?.currencyList = model.currencies
-                completion(true)
+                self?.getCurrncyRates(completion: completion)
             case .failure(let error):
                 print(error)
                 completion(false)
             }
-            print(result)
         }
     }
     
     func getCurrncyRates(completion: @escaping (Bool) -> ()) {
-        if let lastTimeStamp = currencySummery?.timestamp {
-            if Date().timeIntervalSince1970 - lastTimeStamp > Config.request_time_interval {
-                return completion(true)
-            }
-        }
         currencyService.getCurrencyRates { [weak self] result in
             switch result {
             case .success(let model):
@@ -55,12 +78,13 @@ class HomeViewModel {
                                                       currencyList: self?.currencyList,
                                                       currencyRates: model.quotes)
                 self?.currencySummery = currencySummery
+                //Save data to cache
+                self?.dataManager.saveCurrencyData(with: currencySummery)
                 completion(true)
             case .failure(let error):
                 print(error)
                 completion(false)
             }
-            print(result)
         }
     }
     
@@ -77,7 +101,6 @@ class HomeViewModel {
     func getCurrencyAmountStringFor(key: String) -> String {
         let rate = getCurrencyRateFor(key: key)
         let amount = rate * (currncyAmount ?? 1)
-        print("\(key) \(amount)")
         switch amount {
         case 0.0..<1.0:
             return getFormattedCurrencyString(for: amount, with: 4)
@@ -86,7 +109,7 @@ class HomeViewModel {
         default:
             return "\(getFormattedCurrencyString(for: amount, with: 1))M"
         }
-
+        
     }
     
     private func getCurrencyRateFor(key: String) -> Double {

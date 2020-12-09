@@ -15,5 +15,17 @@ struct Config {
         static let base_url = "api.currencylayer.com"
     }
     static let request_timeout = 10.0 //Seconds
-    static let request_time_interval = 60.0 //Seconds
+    static let request_time_interval = 60.0 * 30.0 //Seconds
+    static let date_time_format = "YYYY MMM d, hh:mm"
+}
+
+struct Strings {
+    static let last_update_time = "Last updated on %@"
+    struct Alert {
+        static let titleNotLoaded = "Coudn't Load!"
+        static let messageDataNotAvailable = "Data not available to display."
+        static let tryAgainButton = "Try again"
+        static let messageDataOutdated = "Loading with outdated data."
+        static let okButton = "Ok"
+    }
 }

@@ -17,6 +17,9 @@ func getFormattedCurrencyString(for value: Double, with decimels: Int = 2) -> St
     return formatter.string(from: number) ?? "0.00"
 }
 
-func testFunc() -> String {
-    "Test"
+func getDateTimeString(from timestamp: Double) -> String {
+    let date = Date(timeIntervalSince1970: timestamp)
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = Config.date_time_format
+    return dateFormatter.string(from: date)
 }

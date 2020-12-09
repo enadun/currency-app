@@ -55,6 +55,8 @@ class CurrencyService: CurrencyServiceType {
     }
 }
 
+
+//TODO: Move this to unit test
 class MockCurrencyService: CurrencyServiceType {
     func getCurrencyList(completion: @escaping (Result<CurrencyListModel, Error>) -> ()) {
         if let result: CurrencyListModel = getDataFor(fileName: "list") {
