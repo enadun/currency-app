@@ -31,11 +31,11 @@ class HomeViewController: UIViewController {
         
         setupPickerView()
         
-        viewModel = HomeViewModel()
+        viewModel = HomeViewModel(with: CurrencyService())
         loadList()
     }
     
-    
+    // MARK: - Private methods
     private func loadList() {
         loadingView.isHidden = false
         viewModel.loadCurrncyList { [weak self] success in
@@ -118,6 +118,7 @@ class HomeViewController: UIViewController {
         picker.selectRow(0, inComponent: 0, animated: false)
     }
     
+    // MARK: - Object methods
     @objc func doneButtonPressed() {
         view.endEditing(true)
         loadList()
@@ -133,6 +134,7 @@ class HomeViewController: UIViewController {
     }
 }
 
+// MARK: - Picker deligate and data source methods
 extension HomeViewController: UIPickerViewDataSource, UIPickerViewDelegate {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         1
@@ -161,6 +163,7 @@ extension HomeViewController: UIPickerViewDataSource, UIPickerViewDelegate {
     }
 }
 
+// MARK: - Text field delegate methods
 extension HomeViewController: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
         textField.text = ""
@@ -184,6 +187,7 @@ extension HomeViewController: UITextFieldDelegate {
     }
 }
 
+// MARK: - Table view data source methods
 extension HomeViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         currencyList.count
@@ -199,4 +203,3 @@ extension HomeViewController: UITableViewDataSource {
         return cell ?? ExchangeCell()
     }
 }
-

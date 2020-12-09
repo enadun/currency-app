@@ -16,8 +16,8 @@ class HomeViewModel {
     private let currencyService: CurrencyServiceType
     private let dataManager = DataManager()
     
-    init() {
-        currencyService = CurrencyService()
+    init(with currencyService: CurrencyServiceType) {
+        self.currencyService = currencyService
         selectedCurrencyKey = "USD"
         currncyAmount = 1
     }
@@ -33,6 +33,7 @@ class HomeViewModel {
     func setSelectedCurrencyKey(selectedCurrency: String?) {
         self.selectedCurrencyKey = selectedCurrency
     }
+    
     func setCurrencyAmount(amount: Double) {
         self.currncyAmount = amount
     }
@@ -102,16 +103,17 @@ class HomeViewModel {
         let rate = getCurrencyRateFor(key: key)
         let amount = rate * (currncyAmount ?? 1)
         switch amount {
-        case 0.0..<1.0:
+        case 0.0..<1.0: // If value less then 1 show more decimals
             return getFormattedCurrencyString(for: amount, with: 4)
-        case 1.0..<1000000.0:
+        case 1.0..<100000000.0:
             return getFormattedCurrencyString(for: amount, with: 2)
-        default:
-            return "\(getFormattedCurrencyString(for: amount, with: 1))M"
+        default: // If value is huge, divide by million
+            return "\(getFormattedCurrencyString(for: amount / 1000000.0, with: 1))M"
         }
         
     }
     
+    // MARK: - Private methods
     private func getCurrencyRateFor(key: String) -> Double {
         let selectedRateKey = "USD\(selectedCurrencyKey ?? "USD")"
         let selectedRateWithUSD = currencySummery?.currencyRates?[selectedRateKey] ?? 1

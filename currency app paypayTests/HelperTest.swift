@@ -25,4 +25,13 @@ class HelperTest: XCTestCase {
         let str6 = getFormattedCurrencyString(for: 102.125)
         XCTAssertEqual(str6, "102.12")
     }
+    
+    func testGetDateTimeString() throws {
+        let str1 = getDateTimeString(from: 1607531728.881)
+        XCTAssertEqual(str1, "2020 Dec 10, 12:35")
+        let str2 = getDateTimeString(from: 1606777844.000)
+        XCTAssertEqual(str2, "2020 Dec 1, 07:10")
+        let str3 = getDateTimeString(from: 1580646002.000)
+        XCTAssertEqual(str3, "2020 Feb 2, 08:20")
+    }
 }

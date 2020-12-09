@@ -19,6 +19,7 @@ class DataManager {
         loadFileFromCache(fileName: DataManager.currency_summery)
     }
     
+    // MARK: - Private methods
     private func saveDataToCash<T: Codable>(data: T, fileName: String) {
         if let filePath = getCacheDirectoryFor()?
             .appendingPathComponent(fileName)

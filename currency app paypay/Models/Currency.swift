@@ -20,6 +20,7 @@ struct CurrencyListModel: Codable {
     let currencies: [String: String]?
 }
 
+// MARK: - CurrencySummery
 struct CurrencySummery: Codable {
     let timestamp: Double?
     let currencyList: [String: String]?

@@ -23,7 +23,6 @@ class CurrencyService: CurrencyServiceType {
     }
     
     // MARK: - Private methods
-    
     private func getData<T: Codable>(path: String, completion: @escaping (Result<T, Error>) -> ()) {
         var urlComponents = URLComponents()
         urlComponents.host = Config.CurrencyService.base_url
@@ -52,40 +51,5 @@ class CurrencyService: CurrencyServiceType {
                 completion(.failure(error))
             }
         }.resume()
-    }
-}
-
-
-//TODO: Move this to unit test
-class MockCurrencyService: CurrencyServiceType {
-    func getCurrencyList(completion: @escaping (Result<CurrencyListModel, Error>) -> ()) {
-        if let result: CurrencyListModel = getDataFor(fileName: "list") {
-            completion(.success(result))
-        } else {
-            completion(.failure(NSError(domain: "", code: 100, userInfo: nil)))
-        }
-    }
-    
-    func getCurrencyRates(completion: @escaping (Result<CurrencyRatesModel, Error>) -> ()) {
-        if let result: CurrencyRatesModel = getDataFor(fileName: "rates") {
-            completion(.success(result))
-        } else {
-            completion(.failure(NSError(domain: "", code: 100, userInfo: nil)))
-        }
-    }
-    
-    private func getDataFor<T: Codable>(fileName: String) -> T? {
-        if let path = Bundle.main.path(forResource: fileName, ofType: "json") {
-            do {
-                let data = try Data(contentsOf: URL(fileURLWithPath: path))
-                let result = try JSONDecoder().decode(T.self, from: data)
-                return result
-            } catch {
-                print("JSON parsing error.")
-                return nil
-            }
-        }
-        print("Undefined JSON file.")
-        return nil
     }
 }
