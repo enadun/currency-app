@@ -19,3 +19,9 @@ struct CurrencyListModel: Codable {
     let success: Bool?
     let currencies: [String: String]?
 }
+
+struct CurrencySummery: Codable {
+    let timestamp: Double?
+    let currencyList: [String: String]?
+    let currencyRates: [String: Double]?
+}

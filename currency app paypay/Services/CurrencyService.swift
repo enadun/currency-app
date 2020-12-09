@@ -9,36 +9,34 @@
 import UIKit
 
 protocol CurrencyServiceType {
-    static func getCurrencyList(completion: @escaping (Result<CurrencyListModel, Error>) -> ())
-    static func getCurrencyRates(completion: @escaping (Result<CurrencyRatesModel, Error>) -> ())
+    func getCurrencyList(completion: @escaping (Result<CurrencyListModel, Error>) -> ())
+    func getCurrencyRates(completion: @escaping (Result<CurrencyRatesModel, Error>) -> ())
 }
 
 class CurrencyService: CurrencyServiceType {
-    static func getCurrencyRates(completion: @escaping (Result<CurrencyRatesModel, Error>) -> ()) {
+    func getCurrencyRates(completion: @escaping (Result<CurrencyRatesModel, Error>) -> ()) {
         getData(path: CurrencyEndpoint.liveRates, completion: completion)
     }
-
-    static func getCurrencyList(completion: @escaping (Result<CurrencyListModel, Error>) -> ()) {
+    
+    func getCurrencyList(completion: @escaping (Result<CurrencyListModel, Error>) -> ()) {
         getData(path: CurrencyEndpoint.list, completion: completion)
     }
-
+    
     // MARK: - Private methods
-
-    private static func getData<T: Codable>(path: String,
-                                            completion: @escaping (Result<T, Error>) -> ())
-    {
+    
+    private func getData<T: Codable>(path: String, completion: @escaping (Result<T, Error>) -> ()) {
         var urlComponents = URLComponents()
         urlComponents.host = Config.CurrencyService.base_url
         urlComponents.path = path
         urlComponents.scheme = "http"
         let queryItems = [URLQueryItem(name: "access_key", value: Keys.currency_service_api_key)]
         urlComponents.queryItems = queryItems
-
+        
         guard let url = urlComponents.url else {
             completion(.failure(NSError(domain: "", code: 100, userInfo: nil)))
             return
         }
-
+        
         var request = URLRequest(url: url)
         request.timeoutInterval = Config.request_timeout
         request.httpMethod = "GET"
@@ -54,5 +52,38 @@ class CurrencyService: CurrencyServiceType {
                 completion(.failure(error))
             }
         }.resume()
+    }
+}
+
+class MockCurrencyService: CurrencyServiceType {
+    func getCurrencyList(completion: @escaping (Result<CurrencyListModel, Error>) -> ()) {
+        if let result: CurrencyListModel = getDataFor(fileName: "list") {
+            completion(.success(result))
+        } else {
+            completion(.failure(NSError(domain: "", code: 100, userInfo: nil)))
+        }
+    }
+    
+    func getCurrencyRates(completion: @escaping (Result<CurrencyRatesModel, Error>) -> ()) {
+        if let result: CurrencyRatesModel = getDataFor(fileName: "rates") {
+            completion(.success(result))
+        } else {
+            completion(.failure(NSError(domain: "", code: 100, userInfo: nil)))
+        }
+    }
+    
+    private func getDataFor<T: Codable>(fileName: String) -> T? {
+        if let path = Bundle.main.path(forResource: fileName, ofType: "json") {
+            do {
+                let data = try Data(contentsOf: URL(fileURLWithPath: path))
+                let result = try JSONDecoder().decode(T.self, from: data)
+                return result
+            } catch {
+                print("JSON parsing error.")
+                return nil
+            }
+        }
+        print("Undefined JSON file.")
+        return nil
     }
 }

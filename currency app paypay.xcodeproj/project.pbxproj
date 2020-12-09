@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7F26D5E6258055F10024292A /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F26D5E5258055F10024292A /* HomeViewModel.swift */; };
+		7F26D5E82580562F0024292A /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F26D5E72580562F0024292A /* Helper.swift */; };
+		7F26D5EA258063320024292A /* HelperTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F26D5E9258063320024292A /* HelperTest.swift */; };
+		7F26D5EE25807B8F0024292A /* list.json in Resources */ = {isa = PBXBuildFile; fileRef = 7F26D5EC25807B8F0024292A /* list.json */; };
+		7F26D5EF25807B8F0024292A /* rates.json in Resources */ = {isa = PBXBuildFile; fileRef = 7F26D5ED25807B8F0024292A /* rates.json */; };
+		7F26D5F025807DFB0024292A /* list.json in Resources */ = {isa = PBXBuildFile; fileRef = 7F26D5EC25807B8F0024292A /* list.json */; };
+		7F26D5F125807DFB0024292A /* rates.json in Resources */ = {isa = PBXBuildFile; fileRef = 7F26D5ED25807B8F0024292A /* rates.json */; };
 		7FE0BB65257F7BCA00AC07F1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FE0BB64257F7BCA00AC07F1 /* AppDelegate.swift */; };
 		7FE0BB67257F7BCA00AC07F1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FE0BB66257F7BCA00AC07F1 /* SceneDelegate.swift */; };
 		7FE0BB69257F7BCA00AC07F1 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FE0BB68257F7BCA00AC07F1 /* HomeViewController.swift */; };
@@ -32,6 +39,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7F26D5E5258055F10024292A /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		7F26D5E72580562F0024292A /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
+		7F26D5E9258063320024292A /* HelperTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperTest.swift; sourceTree = "<group>"; };
+		7F26D5EC25807B8F0024292A /* list.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = list.json; sourceTree = "<group>"; };
+		7F26D5ED25807B8F0024292A /* rates.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = rates.json; sourceTree = "<group>"; };
 		7FE0BB61257F7BCA00AC07F1 /* Currency App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Currency App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7FE0BB64257F7BCA00AC07F1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7FE0BB66257F7BCA00AC07F1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -68,6 +80,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7F26D5E4258055B10024292A /* View Models */ = {
+			isa = PBXGroup;
+			children = (
+				7F26D5E5258055F10024292A /* HomeViewModel.swift */,
+			);
+			path = "View Models";
+			sourceTree = "<group>";
+		};
+		7F26D5EB25807B700024292A /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				7F26D5EC25807B8F0024292A /* list.json */,
+				7F26D5ED25807B8F0024292A /* rates.json */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		7FE0BB58257F7BC900AC07F1 = {
 			isa = PBXGroup;
 			children = (
@@ -89,10 +118,11 @@
 		7FE0BB63257F7BCA00AC07F1 /* currency app paypay */ = {
 			isa = PBXGroup;
 			children = (
+				7F26D5E4258055B10024292A /* View Models */,
 				7FE0BB8D257F7F8C00AC07F1 /* Utils */,
 				7FE0BB8A257F7EAB00AC07F1 /* Services */,
 				7FE0BB89257F7E6600AC07F1 /* Models */,
-				7FE0BB86257F7C0E00AC07F1 /* Main Screen */,
+				7FE0BB86257F7C0E00AC07F1 /* Home Screen */,
 				7FE0BB64257F7BCA00AC07F1 /* AppDelegate.swift */,
 				7FE0BB66257F7BCA00AC07F1 /* SceneDelegate.swift */,
 				7FE0BB6A257F7BCA00AC07F1 /* Main.storyboard */,
@@ -106,19 +136,21 @@
 		7FE0BB7A257F7BCE00AC07F1 /* currency app paypayTests */ = {
 			isa = PBXGroup;
 			children = (
+				7F26D5EB25807B700024292A /* Resources */,
 				7FE0BB7D257F7BCE00AC07F1 /* Info.plist */,
 				7FE0BB94257F8A8B00AC07F1 /* HomeViewTest.swift */,
+				7F26D5E9258063320024292A /* HelperTest.swift */,
 			);
 			path = "currency app paypayTests";
 			sourceTree = "<group>";
 		};
-		7FE0BB86257F7C0E00AC07F1 /* Main Screen */ = {
+		7FE0BB86257F7C0E00AC07F1 /* Home Screen */ = {
 			isa = PBXGroup;
 			children = (
 				7FE0BB96257FC73300AC07F1 /* Cell */,
 				7FE0BB68257F7BCA00AC07F1 /* HomeViewController.swift */,
 			);
-			path = "Main Screen";
+			path = "Home Screen";
 			sourceTree = "<group>";
 		};
 		7FE0BB89257F7E6600AC07F1 /* Models */ = {
@@ -142,6 +174,7 @@
 			isa = PBXGroup;
 			children = (
 				7FE0BB90257F802C00AC07F1 /* AppConstants.swift */,
+				7F26D5E72580562F0024292A /* Helper.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -237,8 +270,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				7FE0BB71257F7BCE00AC07F1 /* LaunchScreen.storyboard in Resources */,
+				7F26D5F025807DFB0024292A /* list.json in Resources */,
 				7FE0BB6E257F7BCE00AC07F1 /* Assets.xcassets in Resources */,
 				7FE0BB6C257F7BCA00AC07F1 /* Main.storyboard in Resources */,
+				7F26D5F125807DFB0024292A /* rates.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -246,6 +281,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7F26D5EE25807B8F0024292A /* list.json in Resources */,
+				7F26D5EF25807B8F0024292A /* rates.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -257,11 +294,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				7FE0BB98257FC81800AC07F1 /* ExchangeCell.swift in Sources */,
+				7F26D5E6258055F10024292A /* HomeViewModel.swift in Sources */,
 				7FE0BB8C257F7F0600AC07F1 /* CurrencyService.swift in Sources */,
 				7FE0BB69257F7BCA00AC07F1 /* HomeViewController.swift in Sources */,
 				7FE0BB65257F7BCA00AC07F1 /* AppDelegate.swift in Sources */,
 				7FE0BB67257F7BCA00AC07F1 /* SceneDelegate.swift in Sources */,
 				7FE0BB91257F802C00AC07F1 /* AppConstants.swift in Sources */,
+				7F26D5E82580562F0024292A /* Helper.swift in Sources */,
 				7FE0BB8F257F7FD000AC07F1 /* Endpoints.swift in Sources */,
 				7FE0BB88257F7D4600AC07F1 /* Currency.swift in Sources */,
 			);
@@ -272,6 +311,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7FE0BB95257F8A8B00AC07F1 /* HomeViewTest.swift in Sources */,
+				7F26D5EA258063320024292A /* HelperTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -459,6 +499,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = PNKYYEEMXB;
@@ -482,6 +523,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = PNKYYEEMXB;

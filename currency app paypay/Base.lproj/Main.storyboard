@@ -20,17 +20,26 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="36"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="numberPad" returnKeyType="done" smartDashesType="yes"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numberPad" returnKeyType="done" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s4q-cD-Ru1" userLabel="SelectCurrencyButton">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="United States Dollar" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="vxj-TL-Tq6">
+                                <rect key="frame" x="8" y="114.5" width="308" height="44"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                <color key="textColor" red="0.1896599531" green="0.24807175989999999" blue="0.62310498950000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" text=" USD" borderStyle="roundedRect" translatesAutoresizingMaskIntoConstraints="NO" id="s4q-cD-Ru1" userLabel="SelectCurrencyTextField">
                                 <rect key="frame" x="324" y="114.5" width="80" height="44"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="8zy-jB-kRg"/>
                                     <constraint firstAttribute="width" constant="80" id="tdo-Cs-YuY"/>
                                 </constraints>
+                                <color key="textColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="27"/>
-                                <state key="normal" title="XYZ"/>
-                            </button>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FzA-S9-32H">
                                 <rect key="frame" x="0.0" y="166.5" width="414" height="40.5"/>
                                 <subviews>
@@ -69,16 +78,16 @@
                                                     <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="120,000.00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ubk-xF-zYv" userLabel="ExchangedAmount">
-                                                    <rect key="frame" x="8" y="64.5" width="398" height="32.5"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="27"/>
-                                                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1 USD = 1.333104 SGD" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hdq-rn-Di3" userLabel="ExchangeRate">
-                                                    <rect key="frame" x="276.5" y="42" width="129.5" height="14.5"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1 USD = 1.333104 SGD" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hdq-rn-Di3" userLabel="ExchangeRate">
+                                                    <rect key="frame" x="8" y="42" width="398" height="14.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="120,000.00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="ubk-xF-zYv" userLabel="ExchangedAmount">
+                                                    <rect key="frame" x="8" y="64.5" width="398" height="32.5"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="27"/>
+                                                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -90,6 +99,7 @@
                                                 <constraint firstAttribute="bottom" secondItem="ubk-xF-zYv" secondAttribute="bottom" constant="8" id="K19-ee-0Zz"/>
                                                 <constraint firstAttribute="trailing" secondItem="Hdq-rn-Di3" secondAttribute="trailing" constant="8" id="OFg-oz-yNO"/>
                                                 <constraint firstItem="ubk-xF-zYv" firstAttribute="top" secondItem="Hdq-rn-Di3" secondAttribute="bottom" constant="8" id="kIz-HQ-mqN"/>
+                                                <constraint firstItem="Hdq-rn-Di3" firstAttribute="leading" secondItem="JZG-xD-NBw" secondAttribute="leading" constant="8" id="mSp-rC-0rb"/>
                                                 <constraint firstAttribute="trailing" secondItem="ubk-xF-zYv" secondAttribute="trailing" constant="8" id="mjb-uY-wW5"/>
                                                 <constraint firstItem="vEp-Zd-vhM" firstAttribute="leading" secondItem="JZG-xD-NBw" secondAttribute="leading" constant="8" id="q4C-c0-epd"/>
                                                 <constraint firstItem="ubk-xF-zYv" firstAttribute="leading" secondItem="JZG-xD-NBw" secondAttribute="leading" constant="8" id="smy-f0-O4m"/>
@@ -104,18 +114,47 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nau-JX-E6S">
+                                <rect key="frame" x="0.0" y="207" width="414" height="689"/>
+                                <subviews>
+                                    <view alpha="0.69999999999999996" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dbE-aZ-NY8">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="689"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </view>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="6cC-Wv-5ac">
+                                        <rect key="frame" x="188.5" y="326" width="37" height="37"/>
+                                    </activityIndicatorView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="6cC-Wv-5ac" firstAttribute="centerX" secondItem="dbE-aZ-NY8" secondAttribute="centerX" id="Bkg-UW-bss"/>
+                                    <constraint firstAttribute="trailing" secondItem="dbE-aZ-NY8" secondAttribute="trailing" id="CPO-nm-nqL"/>
+                                    <constraint firstAttribute="bottom" secondItem="dbE-aZ-NY8" secondAttribute="bottom" id="SAx-Rj-xTS"/>
+                                    <constraint firstItem="dbE-aZ-NY8" firstAttribute="top" secondItem="nau-JX-E6S" secondAttribute="top" id="epo-Aa-68C"/>
+                                    <constraint firstItem="6cC-Wv-5ac" firstAttribute="centerY" secondItem="dbE-aZ-NY8" secondAttribute="centerY" id="gWr-Cv-Vbg"/>
+                                    <constraint firstItem="dbE-aZ-NY8" firstAttribute="leading" secondItem="nau-JX-E6S" secondAttribute="leading" id="j4z-LB-Y2N"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="vxj-TL-Tq6" firstAttribute="top" secondItem="s4q-cD-Ru1" secondAttribute="top" id="1sk-MD-4vs"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="XKN-3e-gPc" secondAttribute="trailing" id="2r6-sr-d9p"/>
                             <constraint firstItem="UsP-e5-d8P" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="4Gj-zh-Hrj"/>
                             <constraint firstItem="FzA-S9-32H" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="8ub-4f-6DS"/>
+                            <constraint firstItem="nau-JX-E6S" firstAttribute="top" secondItem="XKN-3e-gPc" secondAttribute="top" id="D7f-T1-EfJ"/>
                             <constraint firstItem="XKN-3e-gPc" firstAttribute="top" secondItem="FzA-S9-32H" secondAttribute="bottom" id="LFF-dW-mAJ"/>
                             <constraint firstItem="XKN-3e-gPc" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Mwn-yE-zoN"/>
+                            <constraint firstItem="nau-JX-E6S" firstAttribute="leading" secondItem="XKN-3e-gPc" secondAttribute="leading" id="ONu-XT-dQc"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="UsP-e5-d8P" secondAttribute="trailing" constant="10" id="R3y-Hp-0bG"/>
+                            <constraint firstItem="s4q-cD-Ru1" firstAttribute="leading" secondItem="vxj-TL-Tq6" secondAttribute="trailing" constant="8" id="SfG-bP-AQU"/>
                             <constraint firstItem="UsP-e5-d8P" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="Tzq-bh-SgP"/>
                             <constraint firstAttribute="bottom" secondItem="XKN-3e-gPc" secondAttribute="bottom" id="Xe2-JZ-TEK"/>
+                            <constraint firstItem="nau-JX-E6S" firstAttribute="trailing" secondItem="XKN-3e-gPc" secondAttribute="trailing" id="a1T-GX-vlr"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="FzA-S9-32H" secondAttribute="trailing" id="bXv-id-VXq"/>
+                            <constraint firstItem="nau-JX-E6S" firstAttribute="bottom" secondItem="XKN-3e-gPc" secondAttribute="bottom" id="dgH-9K-GnM"/>
+                            <constraint firstItem="vxj-TL-Tq6" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="8" id="fRV-tx-vt1"/>
+                            <constraint firstItem="vxj-TL-Tq6" firstAttribute="bottom" secondItem="s4q-cD-Ru1" secondAttribute="bottom" id="g38-wg-jep"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="s4q-cD-Ru1" secondAttribute="trailing" constant="10" id="qyN-ge-VcD"/>
                             <constraint firstItem="FzA-S9-32H" firstAttribute="top" secondItem="s4q-cD-Ru1" secondAttribute="bottom" constant="8" id="vzc-LE-3lr"/>
                             <constraint firstItem="s4q-cD-Ru1" firstAttribute="top" secondItem="UsP-e5-d8P" secondAttribute="bottom" constant="8" id="yAD-jl-BXz"/>
@@ -123,9 +162,11 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
-                        <outlet property="currencySelectionButton" destination="s4q-cD-Ru1" id="T1a-7J-OOc"/>
+                        <outlet property="currencySelectionTextField" destination="s4q-cD-Ru1" id="FNl-OJ-8FO"/>
                         <outlet property="currencyTextField" destination="UsP-e5-d8P" id="f03-Jk-oUF"/>
                         <outlet property="lastUpdateLabel" destination="cjU-Zp-HB9" id="Tp0-ZU-H4h"/>
+                        <outlet property="loadingView" destination="nau-JX-E6S" id="Xap-lJ-DYI"/>
+                        <outlet property="selectedCurrencyNameLabel" destination="vxj-TL-Tq6" id="L7K-Rv-Soj"/>
                         <outlet property="tableView" destination="XKN-3e-gPc" id="Nd6-6X-eSP"/>
                     </connections>
                 </viewController>

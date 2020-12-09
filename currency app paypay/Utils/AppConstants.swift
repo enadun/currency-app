@@ -15,4 +15,5 @@ struct Config {
         static let base_url = "api.currencylayer.com"
     }
     static let request_timeout = 10.0 //Seconds
+    static let request_time_interval = 60.0 //Seconds
 }
